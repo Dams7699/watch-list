@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'articles#index'
-  resources :articles, except: :index
+  root to: 'lists#index'
+  resources :lists, except: :index do
+    resources :bookmarks, [:new, :create]
+  end
+
+  resources :bookmarks, only: :destroy
 end
